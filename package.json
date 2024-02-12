@@ -1,0 +1,25 @@
+{
+  "author": {
+    "name": "Frieder Widmann",
+    "email": "50137120+friwid@users.noreply.github.com",
+    "url": "https://github.com/friwid"
+  },
+  "bugs": "https://github.com/friwid/nexusrivals/issues",
+  "homepage": "https://github.com/friwid/nexusrivals",
+  "repository": {
+    "type": "git",
+    "url": "hhttps://github.com/friwid/nexusrivals.git"
+  },
+  "license": {
+    "key": "mit",
+    "name": "MIT License",
+    "url": "https://api.github.com/licenses/mit"
+  },
+  "name": "nexusrivals",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ]
+}
