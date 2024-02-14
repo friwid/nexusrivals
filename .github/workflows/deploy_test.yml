@@ -2,18 +2,17 @@ name: Build and Deploy
 on: [push]
 jobs:
   build:
+    name: Build Client
     runs-on: ubuntu-latest
     steps:
-      # ...
       - uses: actions/checkout@v3
       - uses: oven-sh/setup-bun@v1
-
-      # run any `bun` or `bunx` command
       - run: bun install
+      - run: cd packages/client/
       - run: bun run build
   
   deploy:
-    name: Deploay
+    name: Deploy
     runs-on: ubuntu-latest
     environment: 
       name: Test
