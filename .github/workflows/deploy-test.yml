@@ -32,7 +32,8 @@ jobs:
         REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         TARGET: ${{ secrets.TARGET_DIRECTORY }}
-        EXCLUDE: ""  #"/node_modules/, /.github/, /.git/, README.md, LICENSE, .gitignore"
+        EXCLUDE: "" 
         SCRIPT_BEFORE: ""
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
+          bun install
