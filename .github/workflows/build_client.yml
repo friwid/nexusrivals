@@ -1,0 +1,16 @@
+name: Build Client
+on: [push]
+jobs:
+  build:
+    name: Build Client
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+      - name: Install Bun
+        run: bun install
+      - name: Run build
+        run: |
+          ls
+          bun run build
+        working-directory: ./packages/client/
