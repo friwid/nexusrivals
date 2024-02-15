@@ -41,8 +41,7 @@ jobs:
         SCRIPT_BEFORE: ""
         SCRIPT_AFTER: |
           cd ${{ secrets.TARGET_DIRECTORY }}
-          ls -a
-          export BUN_INSTALL="~/.bun"
-          export PATH="$BUN_INSTALL/bin:$PATH"
+          export BUN_INSTALL=~/.bun
+          source ~/.bun/bin/bun.sh
           bun --version
           node --verson
