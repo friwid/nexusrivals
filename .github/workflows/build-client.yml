@@ -6,12 +6,15 @@ jobs:
     name: Build Client
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
       - name: Install Bun
         run: bun install
       - name: Run build
-        run: |
-          ls
-          bun run build
+        run: bun run build
         working-directory: ./packages/client/
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-build
+          path: ./packages/client/dist/

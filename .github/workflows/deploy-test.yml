@@ -1,23 +1,38 @@
-name: Deploy Test
+name: Deploy test
 on: [push]
 jobs: 
   call-build-client-workflow:
     uses: ./.github/workflows/build-client.yml
+  call-build-server-workflow:
+    uses: ./.github/workflows/build-server.yml    
   deploy:
-    name: Deploy Test
+    name: Deploy test
     runs-on: ubuntu-latest
-    needs: call-build-client-workflow
+    needs: [call-build-client-workflow, call-build-server-workflow]
     environment: 
       name: Test
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v1.0.3
+    - name: Download server build artifacts
+      uses: actions/download-artifact@v4
       with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.REMOTE_PORT }}
-        script: |
-          cd ${{ secrets.TARGET_DIRECTORY }}
-          ls
-          mkdir testdir
+        name: server-build
+        path: .
+    - name: Download client build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: client-build
+        path: ./packages/client/dist/
+    - name: Deploy to test server
+      uses: easingthemes/ssh-deploy@main
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-rlgoDzvc -i"
+        SOURCE: "."
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        TARGET: ${{ secrets.TARGET_DIRECTORY }}
+        EXCLUDE: ""  #"/node_modules/, /.github/, /.git/, README.md, LICENSE, .gitignore"
+        SCRIPT_BEFORE: ""
+        SCRIPT_AFTER: |
+          echo $RSYNC_STDOUT
