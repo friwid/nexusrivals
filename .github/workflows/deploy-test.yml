@@ -6,7 +6,7 @@ jobs:
   deploy:
     name: Deploy Test
     runs-on: ubuntu-latest
-    needs: build
+    needs: call-build-client-workflow
     environment: 
       name: Test
     steps:
