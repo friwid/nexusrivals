@@ -41,5 +41,7 @@ jobs:
         SCRIPT_BEFORE: ""
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
+          cd ${{ secrets.TARGET_DIRECTORY }}
           bun --version
-          node --verison
+          node --verson
+          ls -a
