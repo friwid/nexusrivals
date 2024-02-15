@@ -21,5 +21,5 @@ jobs:
       - name: Upload client packages.json artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: client-packages-json
-          path: ./packages/client/packages.json
+          name: client-package-json
+          path: ./packages/client/package.json
