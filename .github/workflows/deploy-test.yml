@@ -40,9 +40,9 @@ jobs:
         EXCLUDE: "" 
         SCRIPT_BEFORE: ""
         SCRIPT_AFTER: |
-        # echo $RSYNC_STDOUT
-        # cd ${{ secrets.TARGET_DIRECTORY }}
-        # source ~/.bashrc
           bun --version
           node --verson
           ls -a
+        # echo $RSYNC_STDOUT
+        # cd ${{ secrets.TARGET_DIRECTORY }}
+        # source ~/.bashrc
