@@ -25,7 +25,7 @@ jobs:
     - name: Download client packages.json artifacts
       uses: actions/download-artifact@v4
       with:
-        name: client-packages.json
+        name: client-packages-json
         path: ./packages/client/
     - name: Deploy to test server
       uses: easingthemes/ssh-deploy@main
