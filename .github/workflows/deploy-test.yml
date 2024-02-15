@@ -40,8 +40,9 @@ jobs:
         EXCLUDE: "" 
         SCRIPT_BEFORE: ""
         SCRIPT_AFTER: |
+          echo $RSYNC_STDOUT
           cd ${{ secrets.TARGET_DIRECTORY }}
           export BUN_INSTALL=~/.bun
-          source ~/.bun/bin/bun.sh
+          source ~/.bun/bin/bun
           bun --version
           node --verson
