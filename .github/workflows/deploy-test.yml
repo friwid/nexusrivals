@@ -1,4 +1,4 @@
-name: Deploy Test
+name: Deploy on Test
 on: [push]
 jobs: 
   call-build-client-workflow:
