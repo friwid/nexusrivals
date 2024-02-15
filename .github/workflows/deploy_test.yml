@@ -1,6 +1,8 @@
 name: Deploy Test
 on: [push]
 jobs: 
+  call-build-client-workflow:
+    uses: ./.github/workflows/build-client.yml
   deploy:
     name: Deploy Test
     runs-on: ubuntu-latest
