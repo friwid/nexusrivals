@@ -1,4 +1,4 @@
-name: Deploy on Test
+name: Deploy Test
 on: [push]
 jobs: 
   call-build-client-workflow:
@@ -19,3 +19,4 @@ jobs:
         script: |
           cd ${{ secrets.TARGET_DIRECTORY }}
           ls
+          mkdir testdir
