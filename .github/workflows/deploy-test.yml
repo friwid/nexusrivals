@@ -22,10 +22,10 @@ jobs:
       with:
         name: client-build
         path: ./packages/client/dist/
-    - name: Download client packages.json artifacts
+    - name: Download client package.json artifacts
       uses: actions/download-artifact@v4
       with:
-        name: client-packages-json
+        name: client-package-json
         path: ./packages/client/
     - name: Deploy to test server
       uses: easingthemes/ssh-deploy@main
