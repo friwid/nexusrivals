@@ -41,4 +41,4 @@ jobs:
         SCRIPT_BEFORE: ""
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
-          /usr/home/${{ secrets.REMOTE_USER }}/.nvm/versions/node/v21.3.0/bin/bun install
+          bun install
