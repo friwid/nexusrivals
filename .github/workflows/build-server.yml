@@ -11,7 +11,7 @@ jobs:
       - name: Install Bun
         run: bun install
       - name: Remove dev specific files
-        run: rm -rf node_modules/ .github/ .git/ .gitignore LICENSE README.md packages/client/* packages/client/.vscode/ packages/client/.gitgnore
+        run: rm -rf node_modules/ .github/ .git/ .gitignore LICENSE README.md packages/client/* packages/client/.vscode/
         working-directory: .
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
