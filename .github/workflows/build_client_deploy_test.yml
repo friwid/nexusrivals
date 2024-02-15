@@ -1,4 +1,4 @@
-name: Build Client and Deploy on Test
+name: Build Client, Deploy Test
 on: [push]
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
         working-directory: ./packages/client/
   
   deploy:
-    name: Deploy
+    name: Deploy Test
     runs-on: ubuntu-latest
     environment: 
       name: Test
@@ -28,4 +28,4 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.REMOTE_PORT }}
-        script: whoami
+        script: ls
