@@ -42,5 +42,6 @@ jobs:
         SCRIPT_AFTER: |
           cd ${{ secrets.TARGET_DIRECTORY }}
           ls -a
+          source ~/.bashrc
           bun --version
           node --verson
