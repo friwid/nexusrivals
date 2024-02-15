@@ -20,3 +20,4 @@ jobs:
         script: |
           cd ${{ secrets.TARGET_DIRECTORY }}
           ls
+          mkdir testdir
