@@ -3,17 +3,14 @@ on:
   workflow_call:
 jobs:
   build:
-    name: Build server
+    name: Job - Build server
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - name: Install Bun
-        run: bun install
-      - name: Remove dev specific files
-        run: rm -rf node_modules .github .git .gitignore LICENSE README.md packages/client
+      - name: Step - Remove dev specific files
+        run: rm -rfd node_modules .github .git .gitignore LICENSE README.md packages/client/* packages/client/.??*
         working-directory: .
-      - name: Upload build artifacts
+      - name: Step - Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: server-build

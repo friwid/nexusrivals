@@ -3,18 +3,23 @@ on:
   workflow_call:
 jobs:
   build:
-    name: Build client
+    name: Job - Build client
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
-      - name: Install Bun
+      - name: Step - Install Bun
         run: bun install
-      - name: Run build
+      - name: Step - Run build
         run: bun run build
         working-directory: ./packages/client/
-      - name: Upload build artifacts
+      - name: Step - Upload client build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: client-build
           path: ./packages/client/dist/
+      - name: Step - Upload client packages.json artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-package-json
+          path: ./packages/client/package.json
