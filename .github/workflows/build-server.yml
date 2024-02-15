@@ -7,9 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - name: Install Bun
-        run: bun install
       - name: Remove dev specific files
         run: rm -rf node_modules .github .git .gitignore LICENSE README.md packages/client packages/client/.vscode
         working-directory: .
