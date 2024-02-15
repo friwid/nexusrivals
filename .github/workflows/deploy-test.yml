@@ -42,4 +42,4 @@ jobs:
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
           cd ${{ secrets.TARGET_DIRECTORY }}
-          ~/.bun/bin/bun --version
+          ~/.bun/bin/bun install
