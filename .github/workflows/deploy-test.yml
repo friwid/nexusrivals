@@ -25,12 +25,7 @@ jobs:
         REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         TARGET: ${{ secrets.TARGET_DIRECTORY }}
-        EXCLUDE: ""
-        SCRIPT_BEFORE: |
-          whoami
-          ls -al
+        EXCLUDE: "/node_modules/, /.github/, /.git/, README.md, LICENSE, .gitignore"
+        SCRIPT_BEFORE: ""
         SCRIPT_AFTER: |
-          whoami
-          mkdir testdir
-          ls -al
           echo $RSYNC_STDOUT
