@@ -41,4 +41,5 @@ jobs:
         SCRIPT_BEFORE: ""
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
-          bun install
+          bun --version
+          node --verison
