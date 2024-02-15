@@ -13,8 +13,13 @@ jobs:
       - name: Run build
         run: bun run build
         working-directory: ./packages/client/
-      - name: Upload build artifacts
+      - name: Upload client build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: client-build
           path: ./packages/client/dist/
+      - name: Upload client packages.json artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: client_packages.json
+          path: ./packages/client/packages.json
