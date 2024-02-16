@@ -6,16 +6,12 @@ on:
       env:
         description: 'Environment to run tests against'
         type: environment
-        required: true
-        
+        required: true    
+
 env:
   GH_TOKEN: ${{ github.token }}
   ENV: ${{ github.event.inputs.env }}  
 
-
-
-
-       
 jobs: 
   check-environment:
     name: Job - Check environment
@@ -30,7 +26,7 @@ jobs:
           echo "Unknown environment - $ENV"
         exit 1
         fi
-        
+
   call-build-client-workflow:
     name: Job - Call Build Client Workflow
     uses: ./.github/workflows/build-client.yml
