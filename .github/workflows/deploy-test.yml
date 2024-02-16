@@ -1,44 +1,57 @@
 name: Deploy test
-on: [push]
+
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
+        
 jobs: 
   call-build-client-workflow:
     uses: ./.github/workflows/build-client.yml
+    
   call-build-server-workflow:
     uses: ./.github/workflows/build-server.yml    
+    
   deploy:
     name: Job - Deploy test
     runs-on: ubuntu-latest
     needs: [call-build-client-workflow, call-build-server-workflow]
-    env:
-      ENVIRONMENT: ${{ github.event.inputs.env }}
     environment: 
-      name: ${{ env.ENVIRONMENT }}
-    steps:
+      name: ${{ github.event.inputs.env }}
+      
+    steps:  
     - name: Step - Check environment variable
       run: |
-        if [[ "${{ env.ENVIRONMENT }}" == "Test" ]]; then
+        if [[ "${{ github.event.inputs.env }}" == "Test" ]]; then
           echo "Deploying to test server..."
-        elif [[ "${{ env.ENVIRONMENT }}" == "Live" ]]; then
+        elif [[ "${{ github.event.inputs.env }}" == "Live" ]]; then
           echo "Deploying to live server..."
         else
-          echo "Unknown environment - ${{ env.ENVIRONMENT }}"
+          echo "Unknown environment - ${{ github.event.inputs.env }}"
         exit 1
         fi
+        
     - name: Step - Download server build artifacts
       uses: actions/download-artifact@v4
       with:
         name: server-build
         path: .
+        
     - name: Step - Download client build artifacts
       uses: actions/download-artifact@v4
       with:
         name: client-build
         path: ./packages/client/dist/
+        
     - name: Step - Download client package.json artifacts
       uses: actions/download-artifact@v4
       with:
         name: client-package-json
         path: ./packages/client/
+        
     - name: Step - Deploy to test server
       uses: easingthemes/ssh-deploy@main
       with:
