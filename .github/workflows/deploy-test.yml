@@ -68,7 +68,7 @@ jobs:
         TARGET: ${{ secrets.TARGET_DIRECTORY }}
         EXCLUDE: "" 
         SCRIPT_BEFORE: |
-          kill -15 bun
+          killall -15 bun
           rm -rf packages node_modules package.json bun.lockb
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
