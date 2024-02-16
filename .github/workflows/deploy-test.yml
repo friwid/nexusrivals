@@ -10,7 +10,7 @@ on:
         
 env:
   GH_TOKEN: ${{ github.token }}
-  ENV: ${{ github.event.inputs.environment }}  
+  ENV: ${{ github.event.inputs.env }}  
 
 
 
