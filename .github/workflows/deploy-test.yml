@@ -13,6 +13,7 @@ jobs:
       name: ${{ github.event.inputs.env }}
     steps:
     - name: Step - Check environment variable
+      run: |
         if [[ "${{ environment.name }}" == "Test" ]]; then
           echo "Deploying to test server..."
         elif [[ "${{ environment.name }}" == "Live" ]]; then
