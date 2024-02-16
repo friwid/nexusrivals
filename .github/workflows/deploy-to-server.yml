@@ -68,13 +68,15 @@ jobs:
         TARGET: ${{ secrets.TARGET_DIRECTORY }}
         EXCLUDE: "" 
         SCRIPT_BEFORE: |
-          killall -15 bun
-          rm -rf packages node_modules package.json bun.lockb
-        SCRIPT_AFTER: |
-          echo $RSYNC_STDOUT
           cd ${{ secrets.TARGET_DIRECTORY }}
-          ~/.bun/bin/bun install
-          ~/.bun/bin/bun packages/server/src/server.js
+          echo "Entering SCRIPT_BEFORE..."
+          /usr/bin/bash stop-remove.sh
+          echo "Leaving SCRIPT_BEFORE..."
+        SCRIPT_AFTER: |
+          echo "Entering SCRIPT_AFTER..."
+          echo $RSYNC_STDOUT
+          /usr/bin/bash install-start.sh
+          echo "Leaving SCRIPT_AFTER..."
           
   deploy-live:
     if:  ${{ github.event.inputs.env == 'Live' }}
