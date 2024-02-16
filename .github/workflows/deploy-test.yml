@@ -1,42 +1,52 @@
-name: Deploy test
+name: Workflow - Deploy
 
 on: 
   workflow_dispatch:
     inputs:
-      environment:
+      env:
         description: 'Environment to run tests against'
         type: environment
         required: true
         
 env:
   GH_TOKEN: ${{ github.token }}
-        
+  ENV: ${{ github.event.inputs.environment }}  
+
+
+
+
+       
 jobs: 
-  call-build-client-workflow:
-    uses: ./.github/workflows/build-client.yml
-    
-  call-build-server-workflow:
-    uses: ./.github/workflows/build-server.yml    
-    
-  deploy:
-    name: Job - Deploy test
+  check-environment:
+    name: Job - Check environment
     runs-on: ubuntu-latest
-    needs: [call-build-client-workflow, call-build-server-workflow]
-    environment: 
-      name: ${{ github.event.inputs.env }}
-      
-    steps:  
-    - name: Step - Check environment variable
-      run: |
-        if [[ "${{ github.event.inputs.env }}" == "Test" ]]; then
-          echo "Deploying to test server..."
-        elif [[ "${{ github.event.inputs.env }}" == "Live" ]]; then
-          echo "Deploying to live server..."
+    steps:
+     - run: |
+        if [[ "$ENV" == "Test" ]]; then
+          echo "Deploying to TEST server..."
+        elif [[ "$ENV" == "Live" ]]; then
+          echo "Deploying to LIVE server..."
         else
-          echo "Unknown environment - ${{ github.event.inputs.env }}"
+          echo "Unknown environment - $ENV"
         exit 1
         fi
         
+  call-build-client-workflow:
+    name: Job - Call Build Client Workflow
+    uses: ./.github/workflows/build-client.yml
+    
+  call-build-server-workflow:
+    name: Job - Call Build Server Workflow
+    uses: ./.github/workflows/build-server.yml    
+    
+  deploy:
+    name: Job - Deploy to $ENV
+    runs-on: ubuntu-latest
+    needs: [call-build-client-workflow, call-build-server-workflow]
+    environment: 
+      name: $ENV
+      
+    steps:          
     - name: Step - Download server build artifacts
       uses: actions/download-artifact@v4
       with:
