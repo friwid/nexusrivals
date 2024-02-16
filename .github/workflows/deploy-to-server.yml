@@ -116,7 +116,11 @@ jobs:
         EXCLUDE: "" 
         SCRIPT_BEFORE: |
           cd ${{ secrets.TARGET_DIRECTORY }}
+          echo "Entering SCRIPT_BEFORE..."
           /usr/bin/bash stop-remove.sh
+          echo "Leaving SCRIPT_BEFORE..."
         SCRIPT_AFTER: |
+          echo "Entering SCRIPT_AFTER..."
           echo $RSYNC_STDOUT
           /usr/bin/bash install-start.sh
+          echo "Leaving SCRIPT_AFTER..."
