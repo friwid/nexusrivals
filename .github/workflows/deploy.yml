@@ -115,12 +115,9 @@ jobs:
         TARGET: ${{ secrets.TARGET_DIRECTORY }}
         EXCLUDE: "" 
         SCRIPT_BEFORE: |
-          rm -rf packages
-          rm -rf node_modules
-          rm -rf package.json
-          rm -rf bun.lockb
+          cd ${{ secrets.TARGET_DIRECTORY }}
+          bash install-start
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
           cd ${{ secrets.TARGET_DIRECTORY }}
-          ~/.bun/bin/bun install
-          ~/.bun/bin/bun packages/server/src/server.js &
+          bash install-start
