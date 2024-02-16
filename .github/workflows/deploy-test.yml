@@ -12,6 +12,15 @@ jobs:
     environment: 
       name: ${{ github.event.inputs.env }}
     steps:
+    - name: Step - Check environment variable
+        if [[ "${{ environment.name }}" == "Test" ]]; then
+          echo "Deploying to test server..."
+        elif [[ "${{ env.DEPLOY_ENV }}" == "Live" ]]; then
+          echo "Deploying to live server..."
+        else
+          echo "Unknown environment - ${{ env.DEPLOY_ENV }}"
+        exit 1
+        fi
     - name: Step - Download server build artifacts
       uses: actions/download-artifact@v4
       with:
@@ -38,7 +47,9 @@ jobs:
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         TARGET: ${{ secrets.TARGET_DIRECTORY }}
         EXCLUDE: "" 
-        SCRIPT_BEFORE: ""
+        SCRIPT_BEFORE: |
+        rm -rf packages node_modules package.json bun.lockb
+        rm -rf bun
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
           cd ${{ secrets.TARGET_DIRECTORY }}
