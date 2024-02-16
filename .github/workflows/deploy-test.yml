@@ -9,17 +9,19 @@ jobs:
     name: Job - Deploy test
     runs-on: ubuntu-latest
     needs: [call-build-client-workflow, call-build-server-workflow]
+    env:
+      ENVIRONMENT: ${{ github.event.inputs.env }}
     environment: 
-      name: ${{ github.event.inputs.env }}
+      name: ${{ env.ENVIRONMENT }}
     steps:
     - name: Step - Check environment variable
       run: |
-        if [[ "${{ environment.name }}" == "Test" ]]; then
+        if [[ "${{ env.ENVIRONMENT }}" == "Test" ]]; then
           echo "Deploying to test server..."
-        elif [[ "${{ environment.name }}" == "Live" ]]; then
+        elif [[ "${{ env.ENVIRONMENT }}" == "Live" ]]; then
           echo "Deploying to live server..."
         else
-          echo "Unknown environment - ${{ env.environment.name }}"
+          echo "Unknown environment - ${{ env.ENVIRONMENT }}"
         exit 1
         fi
     - name: Step - Download server build artifacts
