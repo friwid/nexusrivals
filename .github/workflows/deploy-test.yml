@@ -13,20 +13,6 @@ env:
   ENV: ${{ github.event.inputs.env }}  
 
 jobs: 
-  check-environment:
-    name: Job - Check environment
-    runs-on: ubuntu-latest
-    steps:
-     - run: |
-        if [[ "$ENV" == "Test" ]]; then
-          echo "Deploying to TEST server..."
-        elif [[ "$ENV" == "Live" ]]; then
-          echo "Deploying to LIVE server..."
-        else
-          echo "Unknown environment - $ENV"
-        exit 1
-        fi
-
   call-build-client-workflow:
     name: Job - Call Build Client Workflow
     uses: ./.github/workflows/build-client.yml
@@ -42,7 +28,18 @@ jobs:
     environment: 
       name: $ENV
       
-    steps:          
+    steps:     
+    - name: Job - Check environment
+      run: |
+        if [[ "$ENV" == "Test" ]]; then
+          echo "Deploying to TEST server..."
+        elif [[ "$ENV" == "Live" ]]; then
+          echo "Deploying to LIVE server..."
+        else
+          echo "Unknown environment - $ENV"
+        exit 1
+        fi
+        
     - name: Step - Download server build artifacts
       uses: actions/download-artifact@v4
       with:
@@ -61,7 +58,7 @@ jobs:
         name: client-package-json
         path: ./packages/client/
         
-    - name: Step - Deploy to test server
+    - name: Step - Deploy to server
       uses: easingthemes/ssh-deploy@main
       with:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
