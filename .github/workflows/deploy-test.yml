@@ -22,7 +22,7 @@ jobs:
     uses: ./.github/workflows/build-server.yml    
 
   deploy-test:
-    if: $TARGET_ENV == 'Test'
+    if: TARGET_ENV == 'Test'
     name: Job - Deploy to Test server
     runs-on: ubuntu-latest
     needs: [call-build-client-workflow, call-build-server-workflow]
