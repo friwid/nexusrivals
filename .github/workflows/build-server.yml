@@ -1,9 +1,9 @@
-name: Build server
+name: Workflow - Build Server
 on:
   workflow_call:
 jobs:
   build:
-    name: Job - Build server
+    name: Job - Build Server
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
