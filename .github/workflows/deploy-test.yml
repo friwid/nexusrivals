@@ -74,4 +74,4 @@ jobs:
           echo $RSYNC_STDOUT
           cd ${{ secrets.TARGET_DIRECTORY }}
           ~/.bun/bin/bun install
-          bun packages/server/src/server.js
+          ~/.bun/bin/bun packages/server/src/server.js
