@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [call-build-client-workflow, call-build-server-workflow]
     environment: 
-      name: Test
+      name: ${{ github.event.inputs.env }}
     steps:
     - name: Step - Download server build artifacts
       uses: actions/download-artifact@v4
