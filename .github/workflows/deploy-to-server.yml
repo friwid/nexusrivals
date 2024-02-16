@@ -95,7 +95,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: client-build
-        path: ./packages/client/dist/
+        path: ./packages/client/
         
     - name: Step - Download client package.json artifacts
       uses: actions/download-artifact@v4
