@@ -25,9 +25,8 @@ jobs:
     name: Job - Deploy
     runs-on: ubuntu-latest
     needs: [call-build-client-workflow, call-build-server-workflow]
-    environment: 
-      name: Test
-      
+    environment: $TARGET_ENV
+    
     steps:     
     - name: Job - Check environment
       run: |
