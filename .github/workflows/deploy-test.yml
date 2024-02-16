@@ -15,10 +15,10 @@ jobs:
     - name: Step - Check environment variable
         if [[ "${{ environment.name }}" == "Test" ]]; then
           echo "Deploying to test server..."
-        elif [[ "${{ env.DEPLOY_ENV }}" == "Live" ]]; then
+        elif [[ "${{ environment.name }}" == "Live" ]]; then
           echo "Deploying to live server..."
         else
-          echo "Unknown environment - ${{ env.DEPLOY_ENV }}"
+          echo "Unknown environment - ${{ env.environment.name }}"
         exit 1
         fi
     - name: Step - Download server build artifacts
@@ -48,8 +48,10 @@ jobs:
         TARGET: ${{ secrets.TARGET_DIRECTORY }}
         EXCLUDE: "" 
         SCRIPT_BEFORE: |
-        rm -rf packages node_modules package.json bun.lockb
+          kill -15 bun
+          rm -rf packages node_modules package.json bun.lockb
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
           cd ${{ secrets.TARGET_DIRECTORY }}
           ~/.bun/bin/bun install
+          bun packages/server/src/server.js
