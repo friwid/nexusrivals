@@ -1,9 +1,9 @@
-name: Build client
+name: Workflow - Build Client
 on:
   workflow_call:
 jobs:
   build:
-    name: Job - Build client
+    name: Job - Build Client
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
