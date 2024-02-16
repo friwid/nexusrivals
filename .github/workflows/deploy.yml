@@ -116,8 +116,8 @@ jobs:
         EXCLUDE: "" 
         SCRIPT_BEFORE: |
           cd ${{ secrets.TARGET_DIRECTORY }}
-          bash install-start
+          bash stop-remove.sh
         SCRIPT_AFTER: |
           echo $RSYNC_STDOUT
           cd ${{ secrets.TARGET_DIRECTORY }}
-          bash install-start
+          bash install-start.sh
