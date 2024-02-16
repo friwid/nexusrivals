@@ -26,15 +26,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: [call-build-client-workflow, call-build-server-workflow]
     environment: 
-      name: ${{ env.TARGET_ENV }}
+      name: $TARGET_ENV
       
     steps:     
     - name: Job - Check environment
       run: |
-        if [[ "$TARGET_ENV" == "Test" ]]; then
-          echo "Deploying to TEST server..."
-        elif [[ "$TARGET_ENV" == "Live" ]]; then
-          echo "Deploying to LIVE server..."
+        if [[ "$TARGET_ENV" == "Test" || "$TARGET_ENV" == "Live" ]]; then
+          echo "Deploying to $TARGET_ENV server..."
         else
           echo "Unknown environment - $TARGET_ENV"
         exit 1
