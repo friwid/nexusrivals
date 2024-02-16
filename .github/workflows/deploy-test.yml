@@ -8,6 +8,9 @@ on:
         type: environment
         required: true
         
+env:
+  GH_TOKEN: ${{ github.token }}
+        
 jobs: 
   call-build-client-workflow:
     uses: ./.github/workflows/build-client.yml
