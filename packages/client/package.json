@@ -6,7 +6,8 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build-test": "NODE_ENV=test vite build --mode production",
+    "build-live": "NODE_ENV=production vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
