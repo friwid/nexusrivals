@@ -2,7 +2,7 @@
 
 # Logs
 
-logs
+#logs
 _.log
 *.log*
 npm-debug.log_
@@ -187,4 +187,4 @@ dist
 .htaccess
 bak
 deploy.sh
-packages/client/config/db.config.js
+packages/server/config/db.config.js

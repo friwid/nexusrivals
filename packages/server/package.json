@@ -5,6 +5,12 @@
   "dependencies": {
     "@fastify/static": "^7.0.1",
     "client": "workspace:*",
-    "fastify": "^4.26.1"
+    "fastify": "^4.26.1",
+    "mariadb": "^3.3.0",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.37.2"
+  },
+  "engines": {
+    "bun": ">=1.1"
   }
 }
