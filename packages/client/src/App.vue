@@ -1,17 +1,33 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from "./components/Navbar.vue";
+import RegisterDialog from "./components/RegisterDialog.vue";
+import LoginDialog from "./components/LoginDialog.vue";
+import { inject, computed } from "vue";
+import { useTheme } from "vuetify";
+
+const bus = inject("$bus");
+const localStorage = inject("$localStorage");
+
+// Get and set theme in localStorage
+const theme = useTheme();
+theme.global.name.value = localStorage.$getItem("theme") || theme.global.name.value;
+bus.$on("changeTheme", () => {
+  theme.global.name.value =
+  theme.global.name.value === "dark" ? "light" : "dark";
+  localStorage.$setItem("theme", theme.global.name.value);
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <v-app>
+    <Navbar></Navbar>
+    <v-main>
+      <RouterView></RouterView>
+      <RegisterDialog></RegisterDialog>
+      <LoginDialog></LoginDialog>
+    </v-main>
+    <footer></footer>
+  </v-app>
 </template>
 
 <style scoped>
