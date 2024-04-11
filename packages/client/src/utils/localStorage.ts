@@ -1,5 +1,5 @@
 const isLocalStorageAvailable = () => {
-  var test = 'test'
+  const test = 'test'
   try {
     localStorage.setItem(test, test)
     localStorage.removeItem(test)
@@ -11,7 +11,7 @@ const isLocalStorageAvailable = () => {
 
 export default {
   $setItem(key, value) {
-    isLocalStorageAvailable
+    isLocalStorageAvailable()
       ? localStorage.setItem(key, JSON.stringify(value))
       : console.log(
           `Can't $setItem([key=${key}], [value=${value}]): isLocalStorageAvailable returned false.`
@@ -19,7 +19,7 @@ export default {
   },
 
   $getItem(key) {
-    if (isLocalStorageAvailable) {
+    if (isLocalStorageAvailable()) {
       try {
         const item = localStorage.getItem(key)
         return item ? JSON.parse(item) : null
