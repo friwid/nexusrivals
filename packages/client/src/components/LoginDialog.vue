@@ -1,52 +1,50 @@
 <script setup>
-import { ref, inject } from "vue";
-import { useDisplay } from "vuetify";
-import { login } from "../api/api.js";
+import { ref, inject } from 'vue'
+import { useDisplay } from 'vuetify'
+import { login } from '../api/api.js'
 
-const { mobile } = useDisplay();
+const { mobile } = useDisplay()
 
 const loginForm = ref({
-  username: "",
-  password: "",
-  isRememberMe: false,
-});
+  username: '',
+  password: '',
+  isRememberMe: false
+})
 
-const isLoading = ref(false);
-
+const isLoading = ref(false)
 
 // Handle submitted form data, send it to axios API
 const handleSubmit = (e) => {
-  e.preventDefault();
-  isLoading.value = true;
-  console.log("LoginDialog.vue loginForum.value: ");
-  console.table(loginForm.value);
+  e.preventDefault()
+  isLoading.value = true
+  console.log('LoginDialog.vue loginForum.value: ')
+  console.table(loginForm.value)
   setTimeout(() => {
-    isLoading.value = false;
-  }, 2000);
+    isLoading.value = false
+  }, 2000)
 
-  login(e, loginForm.value);
-};
+  login(e, loginForm.value)
+}
 
 // Rules for form validity
-const valid = ref(false);
+const valid = ref(false)
 const rules = {
-  required: (value) => !!value || "Required.",
-  countUsername: (value) =>
-    (value.length >= 3 && value.length <= 16) || "3-16 characters",
-  countPassword: (value) => value.length >= 8 || "Min 8 characters.",
-};
+  required: (value) => !!value || 'Required.',
+  countUsername: (value) => (value.length >= 3 && value.length <= 16) || '3-16 characters',
+  countPassword: (value) => value.length >= 8 || 'Min 8 characters.'
+}
 
 // Listen to events to open dialogs
-const bus = inject("$bus");
-const loginOverlay = ref(false);
+const bus = inject('$bus')
+const loginOverlay = ref(false)
 
-bus.$on("openLoginDialog", () => {
-  loginOverlay.value = true;
-});
+bus.$on('openLoginDialog', () => {
+  loginOverlay.value = true
+})
 
 const openRegisterDialog = () => {
-  bus.$emit("openRegisterDialog");
-};
+  bus.$emit('openRegisterDialog')
+}
 </script>
 
 <template>
@@ -62,18 +60,13 @@ const openRegisterDialog = () => {
         <v-toolbar-title> Login </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn
-            icon
-            variant="plain"
-            size="small"
-            @click="loginOverlay = false"
-          >
+          <v-btn icon variant="plain" size="small" v-on:click="loginOverlay = false">
             <v-icon>fas fa-close</v-icon>
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
 
-      <v-form @submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
+      <v-form v-on:submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
         <v-text-field
           v-model="loginForm.username"
           label="Username"
@@ -108,10 +101,7 @@ const openRegisterDialog = () => {
       </v-form>
 
       <v-card-actions class="justify-center"
-        ><v-btn
-          variant="plain"
-          @click="(loginOverlay = false), openRegisterDialog()"
-        >
+        ><v-btn variant="plain" v-on:click="(loginOverlay = false), openRegisterDialog()">
           No account? Register here
         </v-btn></v-card-actions
       >
