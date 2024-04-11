@@ -1,21 +1,21 @@
-const events = new Map();
+const events = new Map()
 
 export default {
   $on(eventName, fn) {
     if (!events.has(eventName)) {
-      events.set(eventName, []);
+      events.set(eventName, [])
     }
 
-    events.get(eventName).push(fn);
+    events.get(eventName).push(fn)
   },
 
   $off(eventName, fn) {
-    throw { message: 'Not implemented'};
+    throw { message: 'Not implemented' }
   },
 
   $emit(eventName, data) {
     if (events.has(eventName)) {
-      events.get(eventName).forEach(fn => fn(data));
+      events.get(eventName).forEach((fn) => fn(data))
     }
   }
-};
+}

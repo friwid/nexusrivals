@@ -1,6 +1,5 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-
+import { createRouter, createWebHashHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 
 /**
  * Creates a new Vue Router instance.
@@ -9,13 +8,13 @@ import HomeView from "../views/HomeView.vue";
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
-    { 
-      path: "/", 
-      name: "home",
-      component: HomeView, 
-      props: true 
-    },
-/*     { 
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView,
+      props: true
+    }
+    /*     { 
       path: "/register",
       name: "register",
       component: RegisterView, 
@@ -27,7 +26,7 @@ const router = createRouter({
       component: LoginView, 
       props: true 
     }, */
-  ],
-});
+  ]
+})
 
-export default router;
+export default router
