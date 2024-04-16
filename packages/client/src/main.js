@@ -58,7 +58,7 @@ const vuetify = createVuetify({
         }
       },
       dark: {
-        light: false,
+        dark: true,
         colors: {
           primary: colors.pink.darken4,
           secondary: colors.pink.lighten1
@@ -81,7 +81,6 @@ const isDev =
   ENV.VITE_ENV_DEBUG === '.env.development'
 
 isDev ? console.table(ENV) : console.error('--------NOT IN DEV MODE!--------')
-
 app.use(router)
 app.use(createPinia())
 app.use(vuetify)

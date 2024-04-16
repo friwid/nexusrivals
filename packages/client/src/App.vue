@@ -1,7 +1,5 @@
 <script setup>
-import MainNavbar from './components/MainNavbar.vue'
-import RegisterDialog from './components/RegisterDialog.vue'
-import LoginDialog from './components/LoginDialog.vue'
+import BaseLayout from './components/BaseLayout.vue'
 import { inject, computed } from 'vue'
 import { useTheme } from 'vuetify'
 
@@ -19,13 +17,7 @@ bus.$on('changeTheme', () => {
 
 <template>
   <v-app>
-    <MainNavbar />
-    <v-main>
-      <RouterView></RouterView>
-      <RegisterDialog></RegisterDialog>
-      <LoginDialog></LoginDialog>
-    </v-main>
-    <footer></footer>
+    <BaseLayout></BaseLayout>
   </v-app>
 </template>
 

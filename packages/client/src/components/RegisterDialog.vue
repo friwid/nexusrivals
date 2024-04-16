@@ -1,6 +1,7 @@
 <script setup>
 import { ref, inject } from 'vue'
 import { useDisplay } from 'vuetify'
+import { register } from '../api/api.js'
 
 const { mobile } = useDisplay()
 
@@ -22,7 +23,7 @@ const handleSubmit = (e) => {
     isLoading.value = false
   }, 2000)
 
-  login(e, registerForm.value)
+  register(e, registerForm.value)
 }
 
 //Rules
