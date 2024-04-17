@@ -133,4 +133,4 @@ const openLoginDialog = () => {
     </v-card>
   </v-dialog>
 </template>
-<style scoped></style>
+<style module></style>

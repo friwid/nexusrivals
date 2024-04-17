@@ -2,4 +2,4 @@
 
 <template>HomeView</template>
 
-<style scoped></style>
+<style module></style>

@@ -37,4 +37,4 @@ const changeTheme = () => {
   </v-btn>
 </template>
 
-<style scoped></style>
+<style module></style>

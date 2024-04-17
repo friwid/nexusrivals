@@ -15,4 +15,4 @@ import LoginDialog from './LoginDialog.vue'
   </v-main>
 </template>
 
-<style scoped></style>
+<style module></style>
