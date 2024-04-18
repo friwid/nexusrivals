@@ -7,7 +7,7 @@
     "packages/**/src/*",
     "packages/client/src/**/*.vue",
     "packages/client/src/*.vue",
-    "packages/client/src/routes/index.ts",
+    "packages/client/src/routes/index.js",
     "packages/client/src/routes/routes.ts"
   ],
   "exclude": ["packages/**/src/**/__tests__/*"],
