@@ -1,5 +1,9 @@
 <script setup></script>
 
-<template>HomeView</template>
+<template><p :class="$style['test']">HomeView</p></template>
 
-<style module></style>
+<style module>
+.test {
+  color: red;
+}
+</style>
