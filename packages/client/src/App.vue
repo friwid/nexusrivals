@@ -1,5 +1,5 @@
 <script setup>
-import BaseLayout from './components/BaseLayout.vue'
+import BaseLayout from '@/components/BaseLayout.vue'
 import { inject, computed } from 'vue'
 import { useTheme } from 'vuetify'
 

@@ -1,7 +1,7 @@
 <script setup>
-import MainNavbar from './MainNavbar.vue'
-import RegisterDialog from './RegisterDialog.vue'
-import LoginDialog from './LoginDialog.vue'
+import MainNavbar from '@/components/MainNavbar.vue'
+import RegisterDialog from '@/components/RegisterDialog.vue'
+import LoginDialog from '@/components/LoginDialog.vue'
 </script>
 
 <template>

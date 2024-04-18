@@ -1,7 +1,7 @@
 <script setup>
 import { ref, inject } from 'vue'
 import { useDisplay } from 'vuetify'
-import { login } from '../api/api.js'
+import { login } from '@/api/api.js'
 
 const { mobile } = useDisplay()
 

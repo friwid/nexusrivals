@@ -1,15 +1,15 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from '@/App.vue'
 
 import './assets/main.css'
 // vue-router does not have to be imported explicitely, as Vue does it on its own.
 // Doing so still helps with IDE development.
 import { RouterLink, RouterView } from 'vue-router'
-import $bus from './utils/events'
-import $localStorage from './utils/localStorage'
+import $bus from '@/utils/events'
+import $localStorage from '@/utils/localStorage'
 //floating-ui
 import { createPinia } from 'pinia'
-import router from './routes/index'
+import router from '@/router/index'
 
 // Vuetify
 import 'vuetify/styles'
