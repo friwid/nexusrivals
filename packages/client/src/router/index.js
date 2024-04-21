@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 /**
  * Creates a new Vue Router instance.
@@ -11,8 +10,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
-      props: true
+      props: true,
+      component: () => import('@/views/HomeView.vue')
     }
     /*     { 
       path: "/register",
