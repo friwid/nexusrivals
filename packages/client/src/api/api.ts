@@ -10,7 +10,13 @@ export const authFetch = axios.create({
   }
 })
 
-export const login = async (e, formData) => {
+interface LoginData {
+  username: string
+  password: string
+  isRememberMe: boolean
+}
+
+export const login = async (e: Event, formData: LoginData) => {
   const username = formData.username
   const password = formData.password
   const isRememberMe = formData.isRememberMe
@@ -27,7 +33,14 @@ export const login = async (e, formData) => {
   }
 }
 
-export const register = async (e, formData) => {
+interface RegisterData {
+  username: string
+  email: string
+  password: string
+  isTerms: boolean
+}
+
+export const register = async (e: Event, formData: RegisterData) => {
   const username = formData.username
   const email = formData.email
   const password = formData.password

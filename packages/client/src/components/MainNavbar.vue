@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { inject } from 'vue'
 
 const bus = inject('$bus')

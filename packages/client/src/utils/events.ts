@@ -1,7 +1,8 @@
 const events = new Map()
 
+// TODO: give "fn" a type.
 export default {
-  $on(eventName, fn) {
+  $on(eventName: string, fn) {
     if (!events.has(eventName)) {
       events.set(eventName, [])
     }
@@ -9,11 +10,13 @@ export default {
     events.get(eventName).push(fn)
   },
 
-  $off(eventName, fn) {
+  /* TODO: Implement $off
+  $off(eventName: string, fn) {
     throw { message: 'Not implemented' }
   },
+*/
 
-  $emit(eventName, data) {
+  $emit(eventName: string, data?: object) {
     if (events.has(eventName)) {
       events.get(eventName).forEach((fn) => fn(data))
     }

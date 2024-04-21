@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { ref, inject } from 'vue'
 import { useDisplay } from 'vuetify'
-import { register } from '@/api/api.js'
+import { register } from '@/api/api'
 
 const { mobile } = useDisplay()
 

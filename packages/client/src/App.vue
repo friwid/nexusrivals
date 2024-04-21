@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import BaseLayout from '@/components/BaseLayout.vue'
 import { inject, computed } from 'vue'
 import { useTheme } from 'vuetify'

@@ -10,7 +10,7 @@ const isLocalStorageAvailable = () => {
 }
 
 export default {
-  $setItem(key, value) {
+  $setItem(key: string, value: string) {
     isLocalStorageAvailable()
       ? localStorage.setItem(key, JSON.stringify(value))
       : console.log(
@@ -18,7 +18,7 @@ export default {
         )
   },
 
-  $getItem(key) {
+  $getItem(key: string) {
     if (isLocalStorageAvailable()) {
       try {
         const item = localStorage.getItem(key)

@@ -39,7 +39,7 @@ const vuetify = createVuetify({
   },
   components,
   directives,
-  styles,
+  //  styles,
   icons: {
     defaultSet: 'fa',
     aliases,

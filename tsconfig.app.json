@@ -8,7 +8,9 @@
     "packages/client/src/**/*.vue",
     "packages/client/src/*.vue",
     "packages/client/src/router/index.ts",
-    "packages/client/src/router/routes.ts"
+    "packages/client/src/api/api.ts",
+    "packages/client/src/utils/events.ts",
+    "packages/client/src/utils/localStorage.ts"
   ],
   "exclude": ["packages/**/src/**/__tests__/*"],
   "compilerOptions": {

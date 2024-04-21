@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import MainNavbar from '@/components/MainNavbar.vue'
 import RegisterDialog from '@/components/RegisterDialog.vue'
 import LoginDialog from '@/components/LoginDialog.vue'

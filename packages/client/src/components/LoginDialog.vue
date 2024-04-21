@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { login } from '@/api/api.js'
