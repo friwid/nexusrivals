@@ -1,6 +1,6 @@
 <script setup></script>
 
-<template><p :class="$style['test']">HomeView</p></template>
+<template><p :class="$style['test']">HomePage</p></template>
 
 <style module>
 .test {

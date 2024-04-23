@@ -23,7 +23,7 @@ const changeTheme = (): void => {
   </v-btn>
   <v-toolbar-title>🚀</v-toolbar-title>
   <v-spacer></v-spacer>
-  <router-link to="/">HomeView</router-link>
+  <router-link to="/">HomePage</router-link>
   <v-btn icon variant="plain" @click="changeTheme()">
     <v-icon>fas fa-circle-half-stroke</v-icon>
   </v-btn>
