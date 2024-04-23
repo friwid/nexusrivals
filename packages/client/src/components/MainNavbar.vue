@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { inject } from 'vue'
+import type { EventBus } from '@/utils/events'
 
-const bus = inject('$bus')
-const openLoginDialog = () => {
+const bus = inject<EventBus>('$bus')
+if (!bus) {
+  throw new Error('bus is not provided.')
+}
+const openLoginDialog = (): void => {
   bus.$emit('openLoginDialog')
 }
-const openRegisterDialog = () => {
+const openRegisterDialog = (): void => {
   bus.$emit('openRegisterDialog')
 }
-const changeTheme = () => {
+const changeTheme = (): void => {
   bus.$emit('changeTheme')
 }
 </script>

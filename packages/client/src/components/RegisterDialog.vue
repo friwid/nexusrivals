@@ -2,41 +2,52 @@
 import { ref, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { register } from '@/api/api'
+import type { EventBus } from '@/utils/events'
 
 const { mobile } = useDisplay()
 
-const registerForm = ref({
+type RegisterForm = {
+  username: string
+  email: string
+  password: string
+  isTerms: boolean
+}
+
+const registerForm = ref<RegisterForm>({
   username: '',
   email: '',
-  password: ''
+  password: '',
+  isTerms: false
 })
 
 const isLoading = ref(false)
 
 // Handle submitted form data, send it to axios API
-const handleSubmit = (e) => {
-  e.preventDefault()
+const handleSubmit = (event: SubmitEvent) => {
+  // e.preventDefault()
   isLoading.value = true
   console.log('RegisterDialog.vue registerForum.value: ')
-  console.table(lregisterForm.value)
+  console.table(registerForm.value)
   setTimeout(() => {
     isLoading.value = false
   }, 2000)
-
-  register(e, registerForm.value)
+  register(event, registerForm.value)
 }
 
-//Rules
+// Rules for form validity
+type Rule = boolean | string
+
 const valid = ref(false)
 const rules = {
-  required: (value) => !!value || 'Required.',
-  countUsername: (value) => (value.length >= 3 && value.length <= 16) || '3-16 characters',
-  charsUsername: (value) => {
+  required: (value: string): Rule => !!value || 'Required.',
+  countUsername: (value: string): Rule =>
+    (value.length >= 3 && value.length <= 16) || '3-16 characters',
+  charsUsername: (value: string): Rule => {
     const usernamePattern = /^[a-zA-Z0-9]+$/
     return usernamePattern.test(value) || 'Only a-z, A-Z and 0-9 allowed.'
   },
-  countPassword: (value) => value.length >= 8 || 'Min 8 characters.',
-  charsPassword: (value) => {
+  countPassword: (value: string): Rule => value.length >= 8 || 'Min 8 characters.',
+  charsPassword: (value: string): Rule => {
     const passwordPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/
     return (
@@ -44,7 +55,7 @@ const rules = {
       'Needs at least 1 of each: a-z, A-Z, 0-9 and one of these special characters: !"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
     )
   },
-  email: (value) => {
+  email: (value: string): Rule => {
     const pattern =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return pattern.test(value) || 'Invalid email.'
@@ -52,14 +63,17 @@ const rules = {
 }
 
 // Listen to registerLoginDialog event
-const bus = inject('$bus')
+const bus = inject<EventBus>('$bus')
+if (!bus) {
+  throw new Error('bus is not provided.')
+}
 let registerOverlay = ref(false)
 
-bus.$on('openRegisterDialog', () => {
+bus.$on('openRegisterDialog', (): void => {
   registerOverlay.value = true
 })
 
-const openLoginDialog = () => {
+const openLoginDialog = (): void => {
   bus.$emit('openLoginDialog')
 }
 </script>
@@ -82,6 +96,7 @@ const openLoginDialog = () => {
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
+
       <v-form v-on:submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
         <v-text-field
           v-model="registerForm.username"

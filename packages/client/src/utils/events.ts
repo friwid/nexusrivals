@@ -1,8 +1,13 @@
+export interface EventBus {
+  $on(eventName: string, fn: (data?: object) => void): void
+  $emit(eventName: string, data?: object): void
+  $off(eventName: string, fn: (data?: object) => void): void
+}
+
 const events = new Map()
 
-// TODO: give "fn" a type.
 export default {
-  $on(eventName: string, fn) {
+  $on(eventName, fn) {
     if (!events.has(eventName)) {
       events.set(eventName, [])
     }
@@ -10,15 +15,14 @@ export default {
     events.get(eventName).push(fn)
   },
 
-  /* TODO: Implement $off
-  $off(eventName: string, fn) {
+  // TODO: Implement $off event
+  /*   $off(eventName, fn) {
     throw { message: 'Not implemented' }
-  },
-*/
+  }, */
 
-  $emit(eventName: string, data?: object) {
+  $emit(eventName, data): void {
     if (events.has(eventName)) {
-      events.get(eventName).forEach((fn) => fn(data))
+      events.get(eventName).forEach((fn: (data?: object) => void) => fn(data))
     }
   }
-}
+} as EventBus

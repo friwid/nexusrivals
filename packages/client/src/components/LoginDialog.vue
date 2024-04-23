@@ -2,10 +2,17 @@
 import { ref, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { login } from '@/api/api.js'
+import type { EventBus } from '@/utils/events'
 
 const { mobile } = useDisplay()
 
-const loginForm = ref({
+type LoginForm = {
+  username: string
+  password: string
+  isRememberMe: boolean
+}
+
+const loginForm = ref<LoginForm>({
   username: '',
   password: '',
   isRememberMe: false
@@ -14,8 +21,8 @@ const loginForm = ref({
 const isLoading = ref(false)
 
 // Handle submitted form data, send it to axios API
-const handleSubmit = (e) => {
-  e.preventDefault()
+const handleSubmit = (event: SubmitEvent) => {
+  //  e.preventDefault()
   isLoading.value = true
   console.log('LoginDialog.vue loginForum.value: ')
   console.table(loginForm.value)
@@ -23,19 +30,25 @@ const handleSubmit = (e) => {
     isLoading.value = false
   }, 2000)
 
-  login(e, loginForm.value)
+  login(event, loginForm.value)
 }
 
 // Rules for form validity
+type Rule = boolean | string
+
 const valid = ref(false)
 const rules = {
-  required: (value) => !!value || 'Required.',
-  countUsername: (value) => (value.length >= 3 && value.length <= 16) || '3-16 characters',
-  countPassword: (value) => value.length >= 8 || 'Min 8 characters.'
+  required: (value: string): Rule => !!value || 'Required.',
+  countUsername: (value: string): Rule =>
+    (value.length >= 3 && value.length <= 16) || '3-16 characters',
+  countPassword: (value: string): Rule => value.length >= 8 || 'Min 8 characters.'
 }
 
 // Listen to events to open dialogs
-const bus = inject('$bus')
+const bus = inject<EventBus>('$bus')
+if (!bus) {
+  throw new Error('bus is not provided.')
+}
 const loginOverlay = ref(false)
 
 bus.$on('openLoginDialog', () => {

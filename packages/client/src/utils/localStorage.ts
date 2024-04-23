@@ -1,16 +1,21 @@
-const isLocalStorageAvailable = () => {
+export interface LocalStorage {
+  $setItem(key: string, value: string): void
+  $getItem(key: string): string | void | null
+}
+
+const isLocalStorageAvailable = (): boolean => {
   const test = 'test'
   try {
     localStorage.setItem(test, test)
     localStorage.removeItem(test)
     return true
-  } catch (e) {
+  } catch (error) {
     return false
   }
 }
 
 export default {
-  $setItem(key: string, value: string) {
+  $setItem(key, value) {
     isLocalStorageAvailable()
       ? localStorage.setItem(key, JSON.stringify(value))
       : console.log(
@@ -18,17 +23,17 @@ export default {
         )
   },
 
-  $getItem(key: string) {
+  $getItem(key) {
     if (isLocalStorageAvailable()) {
       try {
         const item = localStorage.getItem(key)
         return item ? JSON.parse(item) : null
-      } catch (e) {
-        console.error('Error while parsing JSON:', e)
+      } catch (error) {
+        console.error('Error while parsing JSON:', error)
         return null
       }
     } else {
       return console.log(`Can't $getItem([key=${key}]): isLocalStorageAvailable returned false.`)
     }
   }
-}
+} as LocalStorage

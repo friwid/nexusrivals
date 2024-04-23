@@ -21,6 +21,17 @@ import colors from 'vuetify/util/colors'
 import '@fortawesome/fontawesome-free/css/all.css'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 
+// Check if in dev mode
+const ENV = import.meta.env
+const isDev =
+  ENV.DEV &&
+  !ENV.PROD &&
+  ENV.MODE === 'development' &&
+  ENV.VITE_USER_NODE_ENV === 'development' &&
+  ENV.VITE_ENV_DEBUG === '.env.development'
+
+isDev ? console.table(ENV) : console.error('--------NOT IN DEV MODE!--------')
+
 const vuetify = createVuetify({
   defaults: {
     global: {
@@ -69,18 +80,8 @@ const vuetify = createVuetify({
 })
 
 const pinia = createPinia()
-
 const app = createApp(App)
 
-const ENV = import.meta.env
-const isDev =
-  ENV.DEV &&
-  !ENV.PROD &&
-  ENV.MODE === 'development' &&
-  ENV.VITE_USER_NODE_ENV === 'development' &&
-  ENV.VITE_ENV_DEBUG === '.env.development'
-
-isDev ? console.table(ENV) : console.error('--------NOT IN DEV MODE!--------')
 app.use(router)
 app.use(pinia)
 app.use(vuetify)
