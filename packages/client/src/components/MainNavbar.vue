@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { inject } from 'vue'
-import type { EventBus } from '@/utils/events'
+import type { EventBus } from '@/types/types'
 
 const bus = inject<EventBus>('$bus')
 if (!bus) {
