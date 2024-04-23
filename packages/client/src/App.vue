@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import BaseLayout from '@/components/BaseLayout.vue'
-import { inject, computed } from 'vue'
+import { inject } from 'vue'
 import { useTheme } from 'vuetify'
-import type { LocalStorage } from '@/utils/localStorage'
-import type { EventBus } from '@/utils/events'
+import type { LocalStorage } from '@/types/types'
+import type { EventBus } from '@/types/types'
 
 const bus = inject<EventBus>('$bus')
 const localStorage = inject<LocalStorage>('$localStorage')

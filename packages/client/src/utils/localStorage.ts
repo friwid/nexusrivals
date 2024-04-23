@@ -1,7 +1,4 @@
-export interface LocalStorage {
-  $setItem(key: string, value: string): void
-  $getItem(key: string): string | void | null
-}
+import type { LocalStorage } from '@/types/types'
 
 const isLocalStorageAvailable = (): boolean => {
   const test = 'test'
