@@ -20,8 +20,9 @@ const loginForm = ref<LoginForm>({
 
 const isLoading = ref(false)
 
-// Handle submitted form data, send it to axios API
+// TODO: Handle submitted form data, create USER class? Send it to axios API
 const handleSubmit = (event: SubmitEvent) => {
+  // prevent.Default handled in the form already?
   //  e.preventDefault()
   isLoading.value = true
   console.log('LoginDialog.vue loginForum.value: ')
