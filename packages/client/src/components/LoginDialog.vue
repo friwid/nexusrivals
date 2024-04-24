@@ -2,7 +2,7 @@
 import { ref, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { login } from '@/api/api.js'
-import type { EventBus } from '@/types/types'
+import type { EventBus, FormRule } from '@/types/types'
 
 const { mobile } = useDisplay()
 
@@ -35,14 +35,12 @@ const handleSubmit = (event: SubmitEvent) => {
 }
 
 // Rules for form validity
-type Rule = true | string
-
 const valid = ref(false)
 const rules = {
-  required: (value: string): Rule => !!value || 'Required.',
-  countUsername: (value: string): Rule =>
+  required: (value: string): FormRule => !!value || 'Required.',
+  countUsername: (value: string): FormRule =>
     (value.length >= 3 && value.length <= 16) || '3-16 characters',
-  countPassword: (value: string): Rule => value.length >= 8 || 'Min 8 characters.'
+  countPassword: (value: string): FormRule => value.length >= 8 || 'Min 8 characters.'
 }
 
 // Listen to events to open dialogs
