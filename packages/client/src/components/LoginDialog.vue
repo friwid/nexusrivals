@@ -35,7 +35,7 @@ const handleSubmit = (event: SubmitEvent) => {
 }
 
 // Rules for form validity
-type Rule = boolean | string
+type Rule = true | string
 
 const valid = ref(false)
 const rules = {

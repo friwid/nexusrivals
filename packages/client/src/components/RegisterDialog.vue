@@ -2,7 +2,7 @@
 import { ref, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { register } from '@/api/api'
-import type { EventBus } from '@/types/types'
+import type { EventBus, FormRule } from '@/types/types'
 
 const { mobile } = useDisplay()
 
@@ -36,19 +36,17 @@ const handleSubmit = (event: SubmitEvent) => {
 }
 
 // Rules for form validity
-type Rule = boolean | string
-
 const valid = ref(false)
 const rules = {
-  required: (value: string): Rule => !!value || 'Required.',
-  countUsername: (value: string): Rule =>
+  required: (value: string): FormRule => !!value || 'Required.',
+  countUsername: (value: string): FormRule =>
     (value.length >= 3 && value.length <= 16) || '3-16 characters',
-  charsUsername: (value: string): Rule => {
+  charsUsername: (value: string): FormRule => {
     const usernamePattern = /^[a-zA-Z0-9]+$/
     return usernamePattern.test(value) || 'Only a-z, A-Z and 0-9 allowed.'
   },
-  countPassword: (value: string): Rule => value.length >= 8 || 'Min 8 characters.',
-  charsPassword: (value: string): Rule => {
+  countPassword: (value: string): FormRule => value.length >= 8 || 'Min 8 characters.',
+  charsPassword: (value: string): FormRule => {
     const passwordPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/
     return (
@@ -56,7 +54,7 @@ const rules = {
       'Needs at least 1 of each: a-z, A-Z, 0-9 and one of these special characters: !"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
     )
   },
-  email: (value: string): Rule => {
+  email: (value: string): FormRule => {
     const pattern =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return pattern.test(value) || 'Invalid email.'
