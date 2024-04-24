@@ -4,7 +4,7 @@ import type { EventBus } from '@/types/types'
 
 const bus = inject<EventBus>('$bus')
 if (!bus) {
-  throw new Error('bus is not provided.')
+  throw new Error('bus is not provided!')
 }
 const openLoginDialog = (): void => {
   bus.$emit('openLoginDialog')

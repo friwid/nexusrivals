@@ -48,7 +48,7 @@ const rules = {
 // Listen to events to open dialogs
 const bus = inject<EventBus>('$bus')
 if (!bus) {
-  throw new Error('bus is not provided.')
+  throw new Error('bus is not provided!')
 }
 const loginOverlay = ref(false)
 

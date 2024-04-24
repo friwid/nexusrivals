@@ -12,9 +12,15 @@ export default {
   },
 
   // TODO: Implement $off event
-  /*   $off(eventName, fn) {
-    throw { message: 'Not implemented' }
-  }, */
+  $off(eventName, fn) {
+    throw new Error(
+      '$off(eventName, fn) with parameters eventName "' +
+        eventName +
+        '" and fn "' +
+        fn +
+        '": Not implemented yet!'
+    )
+  },
 
   $emit(eventName, data): void {
     if (events.has(eventName)) {

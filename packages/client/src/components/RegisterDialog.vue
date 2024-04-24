@@ -66,7 +66,7 @@ const rules = {
 // Listen to registerLoginDialog event
 const bus = inject<EventBus>('$bus')
 if (!bus) {
-  throw new Error('bus is not provided.')
+  throw new Error('bus is not provided!')
 }
 let registerOverlay = ref(false)
 
