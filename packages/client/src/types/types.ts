@@ -1,11 +1,11 @@
-export interface EventBus {
+export type EventBus = {
   $on(eventName: string, fn: (data?: object) => void): void
   $emit(eventName: string, data?: object): void
   $off(eventName: string, fn: (data?: object) => void): void
 }
 
-export interface LocalStorage {
+export type LocalStorage = {
   $setItem(key: string, value: string): void
   $getItem(key: string): string | void | null
 }
-export type formRule = true | string
+export type FormRule = true | string
