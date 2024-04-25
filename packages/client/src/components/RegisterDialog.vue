@@ -90,15 +90,15 @@ const openLoginDialog = (): void => {
         <v-toolbar-title> Register </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn icon variant="plain" size="small" v-on:click="registerOverlay = false">
+          <v-btn icon variant="plain" size="small" @click="registerOverlay = false">
             <v-icon>fas fa-close</v-icon>
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
 
-      <v-form v-on:submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
+      <v-form @submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
         <v-text-field
-          v-model="registerForm.username"
+          v-model.lazy="registerForm.username"
           label="Username"
           type="text"
           prepend-inner-icon="fas fa-user"
@@ -106,7 +106,7 @@ const openLoginDialog = (): void => {
           autofocus
         ></v-text-field>
         <v-text-field
-          v-model="registerForm.email"
+          v-model.lazy="registerForm.email"
           label="Email"
           type="email"
           prepend-inner-icon="fas fa-envelope"
@@ -114,7 +114,7 @@ const openLoginDialog = (): void => {
         ></v-text-field>
         <!-- TODO: Add hint="" persistent-hint for information how the password should be-->
         <v-text-field
-          v-model="registerForm.password"
+          v-model.lazy="registerForm.password"
           label="Password"
           type="password"
           prepend-inner-icon="fas fa-key"
@@ -140,7 +140,7 @@ const openLoginDialog = (): void => {
       </v-form>
 
       <v-card-actions class="justify-center"
-        ><v-btn variant="plain" v-on:click="(registerOverlay = false), openLoginDialog()">
+        ><v-btn variant="plain" @click="(registerOverlay = false), openLoginDialog()">
           Already registered? Login here
         </v-btn></v-card-actions
       >

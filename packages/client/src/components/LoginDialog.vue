@@ -72,15 +72,15 @@ const openRegisterDialog = () => {
         <v-toolbar-title> Login </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn icon variant="plain" size="small" v-on:click="loginOverlay = false">
+          <v-btn icon variant="plain" size="small" @click="loginOverlay = false">
             <v-icon>fas fa-close</v-icon>
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
 
-      <v-form v-on:submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
+      <v-form @submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
         <v-text-field
-          v-model="loginForm.username"
+          v-model.lazy="loginForm.username"
           label="Username"
           type="text"
           prepend-inner-icon="fas fa-user"
@@ -88,7 +88,7 @@ const openRegisterDialog = () => {
           autofocus
         ></v-text-field>
         <v-text-field
-          v-model="loginForm.password"
+          v-model.lazy="loginForm.password"
           label="Password"
           type="password"
           prepend-inner-icon="fas fa-key"
@@ -113,7 +113,7 @@ const openRegisterDialog = () => {
       </v-form>
 
       <v-card-actions class="justify-center"
-        ><v-btn variant="plain" v-on:click="(loginOverlay = false), openRegisterDialog()">
+        ><v-btn variant="plain" @click="(loginOverlay = false), openRegisterDialog()">
           No account? Register here
         </v-btn></v-card-actions
       >
