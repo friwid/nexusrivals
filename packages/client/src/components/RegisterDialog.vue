@@ -20,12 +20,9 @@ const handleSubmit = (event: SubmitEvent) => {
   // prevent.Default handled in the form already?
   //  e.preventDefault()
   isLoading.value = true
-  console.log('RegisterDialog.vue registerForum.value: ')
-  console.table(registerForm)
-  setTimeout(() => {
-    isLoading.value = false
-  }, 2000)
-  register(event, registerForm)
+  const response = register(event, registerForm)
+  isLoading.value = false
+  console.log(response)
 }
 
 // Rules for form validity

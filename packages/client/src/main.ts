@@ -22,6 +22,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 
 // Check if in dev mode
+// TODO: Make isDev a global constant to check environment
 const ENV = import.meta.env
 const isDev =
   ENV.DEV &&

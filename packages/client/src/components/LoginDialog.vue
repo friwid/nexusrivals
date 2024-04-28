@@ -19,13 +19,9 @@ const handleSubmit = (event: SubmitEvent) => {
   // prevent.Default handled in the form already?
   //  e.preventDefault()
   isLoading.value = true
-  console.log('LoginDialog.vue loginForum.value: ')
-  console.table(loginForm)
-  setTimeout(() => {
-    isLoading.value = false
-  }, 2000)
-
-  login(event, loginForm)
+  const response = login(event, loginForm)
+  isLoading.value = false
+  console.log(response)
 }
 
 // Rules for form validity

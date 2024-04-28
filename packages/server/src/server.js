@@ -1,6 +1,20 @@
+const CORS_HEADERS = {
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+  }
+}
+
 const server = Bun.serve({
+  port: 3000,
   async fetch(req) {
     const path = new URL(req.url).pathname
+
+    const response = new Response('Bun API response: ' + path, CORS_HEADERS)
+
+    if (path === '/login') return response
+    if (path === '/register') return response
 
     // respond with text/html
     if (path === '/') return new Response('Welcome to Bun!')
