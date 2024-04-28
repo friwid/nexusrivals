@@ -26,12 +26,12 @@ const handleSubmit = (event: SubmitEvent) => {
   //  e.preventDefault()
   isLoading.value = true
   console.log('LoginDialog.vue loginForum.value: ')
-  console.table(loginForm.value)
+  console.table(loginForm)
   setTimeout(() => {
     isLoading.value = false
   }, 2000)
 
-  login(event, loginForm.value)
+  login(event, loginForm)
 }
 
 // Rules for form validity
