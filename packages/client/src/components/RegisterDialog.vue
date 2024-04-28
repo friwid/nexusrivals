@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, inject } from 'vue'
+import { ref, shallowReactive, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { register } from '@/api/api'
 import type { EventBus, FormRule } from '@/types/types'
@@ -13,7 +13,7 @@ type RegisterForm = {
   isTerms: boolean
 }
 
-const registerForm = ref<RegisterForm>({
+const registerForm = shallowReactive<RegisterForm>({
   username: '',
   email: '',
   password: '',

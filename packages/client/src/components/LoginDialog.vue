@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, inject } from 'vue'
+import { ref, shallowReactive, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { login } from '@/api/api.js'
 import type { EventBus, FormRule } from '@/types/types'
@@ -12,7 +12,7 @@ type LoginForm = {
   isRememberMe: boolean
 }
 
-const loginForm = ref<LoginForm>({
+const loginForm = shallowReactive<LoginForm>({
   username: '',
   password: '',
   isRememberMe: false
