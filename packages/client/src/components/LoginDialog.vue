@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, shallowReactive, inject } from 'vue'
 import { useDisplay } from 'vuetify'
-import { login } from '@/api/api.js'
+import { login } from '@/api/api'
 import type { EventBus, FormRule } from '@/types/types'
 
 const { mobile } = useDisplay()
