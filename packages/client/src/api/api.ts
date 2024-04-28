@@ -1,4 +1,5 @@
 import axios from 'axios'
+import type { RegisterData, LoginData } from '@/types/types'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -9,12 +10,6 @@ export const authFetch = axios.create({
     Accept: 'application/json'
   }
 })
-
-interface LoginData {
-  username: string
-  password: string
-  isRememberMe: boolean
-}
 
 export const login = async (e: Event, formData: LoginData) => {
   const username = formData.username
@@ -31,13 +26,6 @@ export const login = async (e: Event, formData: LoginData) => {
   } catch (error) {
     console.error(error)
   }
-}
-
-interface RegisterData {
-  username: string
-  email: string
-  password: string
-  isTerms: boolean
 }
 
 export const register = async (e: Event, formData: RegisterData) => {
