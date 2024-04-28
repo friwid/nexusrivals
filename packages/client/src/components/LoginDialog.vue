@@ -2,17 +2,11 @@
 import { ref, shallowReactive, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { login } from '@/api/api'
-import type { EventBus, FormRule } from '@/types/types'
+import type { EventBus, FormRule, LoginData } from '@/types/types'
 
 const { mobile } = useDisplay()
 
-type LoginForm = {
-  username: string
-  password: string
-  isRememberMe: boolean
-}
-
-const loginForm = shallowReactive<LoginForm>({
+const loginForm = shallowReactive<LoginData>({
   username: '',
   password: '',
   isRememberMe: false

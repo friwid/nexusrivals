@@ -2,18 +2,11 @@
 import { ref, shallowReactive, inject } from 'vue'
 import { useDisplay } from 'vuetify'
 import { register } from '@/api/api'
-import type { EventBus, FormRule } from '@/types/types'
+import type { EventBus, FormRule, RegisterData } from '@/types/types'
 
 const { mobile } = useDisplay()
 
-type RegisterForm = {
-  username: string
-  email: string
-  password: string
-  isTerms: boolean
-}
-
-const registerForm = shallowReactive<RegisterForm>({
+const registerForm = shallowReactive<RegisterData>({
   username: '',
   email: '',
   password: '',

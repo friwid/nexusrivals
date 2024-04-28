@@ -9,3 +9,16 @@ export type LocalStorage = {
   $getItem(key: string): string | void | null
 }
 export type FormRule = true | string
+
+export type LoginData = {
+  username: string
+  password: string
+  isRememberMe: boolean
+}
+
+export type RegisterData = {
+  username: string
+  email: string
+  password: string
+  isTerms: boolean
+}
