@@ -14,11 +14,7 @@ export default {
   // TODO: Implement $off event
   $off(eventName, fn) {
     throw new Error(
-      '$off(eventName, fn) with parameters eventName "' +
-        eventName +
-        '" and fn "' +
-        fn +
-        '": Not implemented yet!'
+      `$off(eventName, fn) with parameters eventName "${eventName}" and fn "${fn}": Not implemented yet!`
     )
   },
 
