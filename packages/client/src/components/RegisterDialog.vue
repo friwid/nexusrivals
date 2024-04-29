@@ -22,7 +22,7 @@ const handleSubmit = (event: SubmitEvent) => {
   isLoading.value = true
   const response = registerCall(event, registerData)
   isLoading.value = false
-  console.log(response)
+  console.table(response)
 }
 
 // Rules for form validity

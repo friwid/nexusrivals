@@ -21,7 +21,7 @@ const handleSubmit = (event: SubmitEvent) => {
   isLoading.value = true
   const response = loginCall(event, loginData)
   isLoading.value = false
-  console.log(response)
+  console.table(response)
 }
 
 // Rules for form validity
