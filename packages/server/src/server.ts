@@ -17,8 +17,6 @@ const server = Bun.serve({
       return new Response(null, { headers, status: 204 })
     }
 
-    const response = new Response('Bun API response: ' + path, { headers })
-
     if (req.method === 'POST' && path === '/api/login') {
       const data = await req.json()
       console.log('Received Login JSON:', data)
