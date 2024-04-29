@@ -1,36 +1,15 @@
 {
+  "name": "nexusrivals",
+  "version": "0.0.1",
   "author": {
     "name": "Frieder Widmann",
     "email": "50137120+friwid@users.noreply.github.com",
     "url": "https://github.com/friwid"
   },
-  "bugs": "https://github.com/friwid/nexusrivals/issues",
-  "homepage": "https://github.com/friwid/nexusrivals",
   "repository": {
     "type": "git",
     "url": "https://github.com/friwid/nexusrivals.git"
   },
-  "license": {
-    "key": "mit",
-    "name": "MIT License",
-    "url": "https://api.github.com/licenses/mit"
-  },
-  "scripts": {
-    "dev": "vite --host",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
-  },
-  "name": "nexusrivals",
-  "private": true,
-  "version": "0.0.1",
-  "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
   "dependencies": {
     "axios": "^1.6.8",
     "core-js": "^3.36.1",
@@ -43,10 +22,31 @@
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5"
   },
+  "bugs": "https://github.com/friwid/nexusrivals/issues",
+  "homepage": "https://github.com/friwid/nexusrivals",
+  "license": {
+    "key": "mit",
+    "name": "MIT License",
+    "url": "https://api.github.com/licenses/mit"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "vite --host",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
   "trustedDependencies": [
     "@fortawesome/fontawesome-common-types",
     "@fortawesome/fontawesome-free",
     "@fortawesome/fontawesome-svg-core",
     "core-js"
+  ],
+  "type": "module",
+  "workspaces": [
+    "packages/*"
   ]
 }
