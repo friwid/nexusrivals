@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, shallowReactive, inject } from 'vue'
 import { useDisplay } from 'vuetify'
-import { login } from '@/api/api'
+import { loginCall } from '@/api/api'
 import type { EventBus, FormRule, LoginData } from '@/types/types'
 
 const { mobile } = useDisplay()
@@ -19,7 +19,7 @@ const handleSubmit = (event: SubmitEvent) => {
   // prevent.Default handled in the form already?
   //  e.preventDefault()
   isLoading.value = true
-  const response = login(event, loginForm)
+  const response = loginCall(event, loginForm)
   isLoading.value = false
   console.log(response)
 }
