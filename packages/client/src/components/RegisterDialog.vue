@@ -6,7 +6,7 @@ import type { EventBus, FormRule, RegisterData } from '@/types/types'
 
 const { mobile } = useDisplay()
 
-const registerForm = shallowReactive<RegisterData>({
+const registerData = shallowReactive<RegisterData>({
   username: '',
   email: '',
   password: '',
@@ -20,7 +20,7 @@ const handleSubmit = (event: SubmitEvent) => {
   // prevent.Default handled in the form already?
   //  e.preventDefault()
   isLoading.value = true
-  const response = registerCall(event, registerForm)
+  const response = registerCall(event, registerData)
   isLoading.value = false
   console.log(response)
 }
@@ -88,7 +88,7 @@ const openLoginDialog = (): void => {
 
       <v-form @submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
         <v-text-field
-          v-model.lazy="registerForm.username"
+          v-model.lazy="registerData.username"
           label="Username"
           type="text"
           prepend-inner-icon="fas fa-user"
@@ -96,7 +96,7 @@ const openLoginDialog = (): void => {
           autofocus
         ></v-text-field>
         <v-text-field
-          v-model.lazy="registerForm.email"
+          v-model.lazy="registerData.email"
           label="Email"
           type="email"
           prepend-inner-icon="fas fa-envelope"
@@ -104,7 +104,7 @@ const openLoginDialog = (): void => {
         ></v-text-field>
         <!-- TODO: Add hint="" persistent-hint for information how the password should be-->
         <v-text-field
-          v-model.lazy="registerForm.password"
+          v-model.lazy="registerData.password"
           label="Password"
           type="password"
           prepend-inner-icon="fas fa-key"
@@ -112,7 +112,7 @@ const openLoginDialog = (): void => {
         ></v-text-field>
         <v-checkbox
           color="secondary"
-          v-model="registerForm.isTerms"
+          v-model="registerData.isTerms"
           label="I have read and accept the terms and conditions."
           :rules="[rules.required]"
           hide-details

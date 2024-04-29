@@ -6,7 +6,7 @@ import type { EventBus, FormRule, LoginData } from '@/types/types'
 
 const { mobile } = useDisplay()
 
-const loginForm = shallowReactive<LoginData>({
+const loginData = shallowReactive<LoginData>({
   username: '',
   password: '',
   isRememberMe: false
@@ -19,7 +19,7 @@ const handleSubmit = (event: SubmitEvent) => {
   // prevent.Default handled in the form already?
   //  e.preventDefault()
   isLoading.value = true
-  const response = loginCall(event, loginForm)
+  const response = loginCall(event, loginData)
   isLoading.value = false
   console.log(response)
 }
@@ -70,7 +70,7 @@ const openRegisterDialog = () => {
 
       <v-form @submit.prevent="handleSubmit" v-model="valid" fluid class="mx-5 mt-5">
         <v-text-field
-          v-model.lazy="loginForm.username"
+          v-model.lazy="loginData.username"
           label="Username"
           type="text"
           prepend-inner-icon="fas fa-user"
@@ -78,7 +78,7 @@ const openRegisterDialog = () => {
           autofocus
         ></v-text-field>
         <v-text-field
-          v-model.lazy="loginForm.password"
+          v-model.lazy="loginData.password"
           label="Password"
           type="password"
           prepend-inner-icon="fas fa-key"
@@ -86,7 +86,7 @@ const openRegisterDialog = () => {
         ></v-text-field>
         <v-checkbox
           color="secondary"
-          v-model="loginForm.isRememberMe"
+          v-model="loginData.isRememberMe"
           label="Remember me."
           hide-details
         ></v-checkbox>
