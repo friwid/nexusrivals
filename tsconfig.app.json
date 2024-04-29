@@ -27,7 +27,7 @@
     },
     // --- Bun ---
     // Enable latest features
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "dom"],
     "target": "ESNext",
     "module": "ESNext",
     "moduleDetection": "force",
