@@ -5,8 +5,7 @@
   "dependencies": {
     "client": "workspace:*",
     "elysia": "^1.0.15",
-    "mariadb": "^3.3.0",
-    "sequelize": "^6.37.2"
+    "mariadb": "^3.3.0"
   },
   "engines": {
     "bun": ">=1.1"
