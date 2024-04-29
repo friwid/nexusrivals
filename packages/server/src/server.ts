@@ -1,21 +1,36 @@
 const CORS_HEADERS = {
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-  }
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization'
 }
+
+const headers = new Headers(CORS_HEADERS)
+headers.set('Content-Type', 'application/json')
 
 const server = Bun.serve({
   port: 3000,
   async fetch(req) {
     const path = new URL(req.url).pathname
 
-    const response = new Response('Bun API response: ' + path, CORS_HEADERS)
+    if (req.method === 'OPTIONS') {
+      // Handle preflight request
+      return new Response(null, { headers, status: 204 })
+    }
 
-    if (path === '/login') return response
-    if (path === '/register') return response
+    const response = new Response('Bun API response: ' + path, { headers })
 
+    if (req.method === 'POST' && path === '/api/login') {
+      const data = await req.json()
+      console.log('Received Login JSON:', data)
+
+      return Response.json({ success: true, data }, { headers })
+    }
+    if (req.method === 'POST' && path === '/api/register') {
+      const data = await req.json()
+      console.log('Received Register JSON:', data)
+
+      return Response.json({ success: true, data }, { headers })
+    }
     // respond with text/html
     if (path === '/') return new Response('Welcome to Bun!')
 

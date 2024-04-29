@@ -27,8 +27,9 @@ export const loginCall = async (e: Event, formData: LoginData) => {
   const username = formData.username
   const password = formData.password
   const isRememberMe = formData.isRememberMe
+  const event: Event = e
 
-  return apiPostCall('/login', { username, password, isRememberMe })
+  return apiPostCall('/api/login', { username, password, isRememberMe, event })
 }
 
 export const registerCall = async (e: Event, formData: RegisterData) => {
@@ -36,6 +37,7 @@ export const registerCall = async (e: Event, formData: RegisterData) => {
   const email = formData.email
   const password = formData.password
   const isTerms = formData.isTerms
+  const event: Event = e
 
-  return apiPostCall('/register', { username, email, password, isTerms })
+  return apiPostCall('/api/register', { username, email, password, isTerms, event })
 }
