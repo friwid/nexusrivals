@@ -11,16 +11,15 @@
     "url": "https://github.com/friwid/nexusrivals.git"
   },
   "dependencies": {
-    "axios": "^1.6.8",
-    "core-js": "^3.36.1",
-    "typescript": "^5.4.5",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.5",
+    "core-js": "^3.36.1",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "npm-run-all2": "^6.1.2",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
   },
   "bugs": "https://github.com/friwid/nexusrivals/issues",
   "homepage": "https://github.com/friwid/nexusrivals",

@@ -4,11 +4,18 @@
   "version": "0.0.1",
   "dependencies": {
     "client": "workspace:*",
+    "elysia": "^1.0.15",
     "mariadb": "^3.3.0",
     "sequelize": "^6.37.2"
   },
   "engines": {
     "bun": ">=1.1"
+  },
+  "scripts": {
+    "dev": "bun --watch src/server.ts",
+    "build": "bun build src/server.ts",
+    "start": "NODE_ENV=production bun src/server.ts",
+    "test": "bun test"
   },
   "devDependencies": {
     "@types/bun": "^1.1.0"

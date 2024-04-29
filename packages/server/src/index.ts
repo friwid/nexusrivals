@@ -9,7 +9,7 @@ headers.set('Content-Type', 'application/json')
 
 const server = Bun.serve({
   port: 3000,
-  async fetch(req) {
+  async fetch(req: Request): Promise<Response> {
     const path = new URL(req.url).pathname
 
     if (req.method === 'OPTIONS') {
@@ -23,12 +23,14 @@ const server = Bun.serve({
 
       return Response.json({ success: true, data }, { headers })
     }
+
     if (req.method === 'POST' && path === '/api/register') {
       const data = await req.json()
       console.log('Received Register JSON:', data)
 
       return Response.json({ success: true, data }, { headers })
     }
+
     // respond with text/html
     if (path === '/') return new Response('Welcome to Bun!')
 
