@@ -15,14 +15,17 @@ const registerData = shallowReactive<RegisterData>({
 
 const isLoading = ref(false)
 
-// TODO: Handle submitted form data, create USER class? Send it to axios API
-const handleSubmit = (event: SubmitEvent) => {
-  // prevent.Default handled in the form already?
-  //  e.preventDefault()
+const handleSubmit = async () => {
   isLoading.value = true
-  const response = registerCall(event, registerData)
-  isLoading.value = false
-  console.table(response)
+  try {
+    const response: object = await registerCall(registerData)
+    console.log('API response:')
+    console.table(response)
+  } catch (error) {
+    console.error(error)
+  } finally {
+    isLoading.value = false
+  }
 }
 
 // Rules for form validity

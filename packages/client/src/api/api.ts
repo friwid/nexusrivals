@@ -23,21 +23,19 @@ const apiPostCall = async (path: string, args: object) => {
   }
 }
 
-export const loginCall = async (e: Event, formData: LoginData) => {
+export const loginCall = async (formData: LoginData) => {
   const username = formData.username
   const password = formData.password
   const isRememberMe = formData.isRememberMe
-  const event: Event = e
 
-  return apiPostCall('/api/login', { username, password, isRememberMe, event })
+  return apiPostCall('/api/login', { username, password, isRememberMe })
 }
 
-export const registerCall = async (e: Event, formData: RegisterData) => {
+export const registerCall = async (formData: RegisterData) => {
   const username = formData.username
   const email = formData.email
   const password = formData.password
   const isTerms = formData.isTerms
-  const event: Event = e
 
-  return apiPostCall('/api/register', { username, email, password, isTerms, event })
+  return apiPostCall('/api/register', { username, email, password, isTerms })
 }
