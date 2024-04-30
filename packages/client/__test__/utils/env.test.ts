@@ -1,4 +1,4 @@
-import { describe, test, expect, beforeAll, afterAll, beforeEach, afterEach } from 'bun:test'
+import { beforeAll, afterAll, describe, test, expect } from 'bun:test'
 import { isDevEnv, isTestEnv, isProdEnv } from '../../src/utils/env.ts'
 
 beforeAll(() => {
@@ -60,6 +60,7 @@ describe('Test environment', () => {
   test('isProdEnv() returns false', () => {
     expect(isProdEnv(ENV)).toBe(false)
   })
+
   afterAll(() => {
     console.log('')
   })
@@ -118,7 +119,9 @@ describe('Unrecognized environment', () => {
     expect(isProdEnv(ENV)).toBe(false)
   })
 
-  afterAll(() => {
-    console.log('▕▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▏')
-  })
+  afterAll(() => {})
+})
+
+afterAll(() => {
+  console.log('▕▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▏')
 })
