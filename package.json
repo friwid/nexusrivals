@@ -23,11 +23,7 @@
   },
   "bugs": "https://github.com/friwid/nexusrivals/issues",
   "homepage": "https://github.com/friwid/nexusrivals",
-  "license": {
-    "key": "mit",
-    "name": "MIT License",
-    "url": "https://api.github.com/licenses/mit"
-  },
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "vite --host",
