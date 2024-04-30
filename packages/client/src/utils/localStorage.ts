@@ -15,7 +15,7 @@ export default {
   $setItem(key, value) {
     isLocalStorageAvailable()
       ? localStorage.setItem(key, JSON.stringify(value))
-      : console.log(
+      : console.error(
           `Can't $setItem([key=${key}], [value=${value}]): isLocalStorageAvailable returned false.`
         )
   },
@@ -30,7 +30,7 @@ export default {
         return null
       }
     } else {
-      return console.log(`Can't $getItem([key=${key}]): isLocalStorageAvailable returned false.`)
+      return console.error(`Can't $getItem([key=${key}]): isLocalStorageAvailable returned false.`)
     }
   }
 } as LocalStorage

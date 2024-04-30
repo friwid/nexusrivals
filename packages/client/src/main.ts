@@ -7,7 +7,7 @@ import './assets/main.css'
 // import { RouterLink, RouterView } from 'vue-router'
 import $bus from '@/utils/events'
 import $localStorage from '@/utils/localStorage'
-import { logEnv } from '@/utils/env'
+import { ENV, printEnvConsoleInfo } from '@/utils/env'
 //floating-ui
 import { createPinia } from 'pinia'
 import router from '@/router/index'
@@ -22,7 +22,8 @@ import colors from 'vuetify/util/colors'
 import '@fortawesome/fontawesome-free/css/all.css'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 
-logEnv()
+printEnvConsoleInfo(ENV)
+console.table(ENV)
 
 const vuetify = createVuetify({
   defaults: {

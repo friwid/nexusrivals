@@ -1,7 +1,7 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": [
-    "env.d.ts",
+    "vite-env.d.ts",
     "index.d.ts",
     "packages/**/src/**/*",
     "packages/**/src/*",
@@ -10,7 +10,11 @@
     "packages/client/src/router/index.ts",
     "packages/client/src/api/api.ts",
     "packages/client/src/utils/events.ts",
-    "packages/client/src/utils/localStorage.ts"
+    "packages/client/src/utils/localStorage.ts",
+    "packages/client/__test__/*",
+    "packages/client/__test__/**/*",
+    "packages/server/__test__/*",
+    "packages/server/__test__/**/*"
   ],
   "exclude": ["packages/**/src/**/__tests__/*"],
   "compilerOptions": {
