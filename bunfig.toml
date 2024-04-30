@@ -1,4 +1,5 @@
 [test]
+preload = "./packages/client/__test__/happydom.ts"
 coverage = true
 coverageThreshold = { lines = 0.75, functions = 0.75, statements = 0.75 }
 coverageSkipTestFiles = false
