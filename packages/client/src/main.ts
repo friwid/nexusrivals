@@ -7,6 +7,7 @@ import './assets/main.css'
 // import { RouterLink, RouterView } from 'vue-router'
 import $bus from '@/utils/events'
 import $localStorage from '@/utils/localStorage'
+import { logEnv } from '@/utils/env'
 //floating-ui
 import { createPinia } from 'pinia'
 import router from '@/router/index'
@@ -21,17 +22,7 @@ import colors from 'vuetify/util/colors'
 import '@fortawesome/fontawesome-free/css/all.css'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 
-// Check if in dev mode
-// TODO: Make isDev a global constant to check environment
-const ENV = import.meta.env
-const isDev =
-  ENV.DEV &&
-  !ENV.PROD &&
-  ENV.MODE === 'development' &&
-  ENV.VITE_USER_NODE_ENV === 'development' &&
-  ENV.VITE_ENV_DEBUG === '.env.development'
-
-isDev ? console.table(ENV) : console.error('--------NOT IN DEV MODE!--------')
+logEnv()
 
 const vuetify = createVuetify({
   defaults: {
