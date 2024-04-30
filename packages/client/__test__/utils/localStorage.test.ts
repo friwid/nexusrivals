@@ -1,5 +1,6 @@
-import { describe, test, expect, beforeAll, afterAll, beforeEach, afterEach } from 'bun:test'
-import $localStorage from '../../src/utils/localStorage.ts'
+import { beforeAll, afterAll, test, expect } from 'bun:test'
+
+import localStorage from '../../src/utils/localStorage.ts'
 
 beforeAll(() => {
   console.log('\n▕▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▏')
@@ -8,8 +9,10 @@ beforeAll(() => {
   console.log('▕▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▏')
 })
 
-test.todo('$setItem', () => {})
-test.todo('$getItem', () => {})
+test('$setItem and $getItem', () => {
+  localStorage.$setItem('testkey', 'testvalue')
+  expect(localStorage.$getItem('testkey')).toStrictEqual('testvalue')
+})
 
 afterAll(() => {
   console.log('▕▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▏')
