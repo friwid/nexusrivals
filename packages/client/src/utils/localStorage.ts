@@ -15,7 +15,7 @@ export default {
   $setItem(key, value) {
     isLocalStorageAvailable()
       ? localStorage.setItem(key, JSON.stringify(value))
-      : console.error(
+      : console.log(
           `Can't $setItem([key=${key}], [value=${value}]): isLocalStorageAvailable returned false.`
         )
   },
@@ -30,7 +30,21 @@ export default {
         return null
       }
     } else {
-      return console.error(`Can't $getItem([key=${key}]): isLocalStorageAvailable returned false.`)
+      return console.log(`Can't $getItem([key=${key}]): isLocalStorageAvailable returned false.`)
+    }
+  },
+  $removeItem(key) {
+    if (isLocalStorageAvailable()) {
+      try {
+        localStorage.removeItem(key)
+      } catch (error) {
+        console.error('Error while removing key:', error)
+        return null
+      }
+    } else {
+      return console.error(
+        `Can't $removeItem([key=${key}]): isLocalStorageAvailable returned false.`
+      )
     }
   }
 } as LocalStorage
