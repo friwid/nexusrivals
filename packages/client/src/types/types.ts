@@ -7,6 +7,7 @@ export type EventBus = {
 export type LocalStorage = {
   $setItem(key: string, value: string): void
   $getItem(key: string): string | void | null
+  $removeItem(key: string): string | void | null
 }
 export type FormRule = true | string
 
