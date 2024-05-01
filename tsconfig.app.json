@@ -27,7 +27,7 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./packages/server/src/*", "./packages/client/src/*"]
+      "@/*": ["./packages/client/src/*", "./packages/server/src/*"]
     },
     // --- Bun ---
     // Enable latest features
