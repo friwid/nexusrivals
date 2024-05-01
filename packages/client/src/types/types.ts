@@ -5,9 +5,10 @@ export type EventBus = {
 }
 
 export type LocalStorage = {
-  $setItem(key: string, value: string): void
-  $getItem(key: string): string | void | null
-  $removeItem(key: string): string | void | null
+  $setItem(key: string, value: string, isStorageAvailable?: boolean): boolean
+  $getItem(key: string, isStorageAvailable?: boolean): string | null | false
+  $removeItem(key: string, isStorageAvailable?: boolean): boolean
+  $clear(isStorageAvailable?: boolean): boolean
 }
 export type FormRule = true | string
 
