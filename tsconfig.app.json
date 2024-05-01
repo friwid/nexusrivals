@@ -14,7 +14,8 @@
     "packages/client/__test__/*",
     "packages/client/__test__/**/*",
     "packages/server/__test__/*",
-    "packages/server/__test__/**/*"
+    "packages/server/__test__/**/*",
+    "happydom.ts"
   ],
   "exclude": ["packages/**/src/**/__tests__/*"],
   "compilerOptions": {
