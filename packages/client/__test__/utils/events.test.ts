@@ -37,6 +37,7 @@ test('Register an event', () => {
   const eventName = 'testEvent'
   const fn = mock()
   $bus.$on(eventName, fn)
+  expect($bus.$on).toBeFunction()
   expect($bus.$on).toHaveBeenCalledWith(eventName, fn)
 })
 
@@ -45,6 +46,7 @@ test('Emit an event', () => {
   const fn = mock()
   $bus.$on(eventName, fn)
   $bus.$emit(eventName)
+  expect($bus.$emit).toBeFunction()
   expect(fn).toHaveBeenCalled()
 })
 
