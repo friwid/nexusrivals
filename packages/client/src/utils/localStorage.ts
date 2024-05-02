@@ -1,11 +1,9 @@
 import type { LocalStorage } from '@/types/types'
 
 export const isStorageAvailable = (): boolean => {
-  const test = 'test'
-
   try {
-    localStorage.setItem(test, test)
-    localStorage.removeItem(test)
+    localStorage.setItem('test', 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest')
+    localStorage.removeItem('test')
     return true
   } catch (error) {
     return false
