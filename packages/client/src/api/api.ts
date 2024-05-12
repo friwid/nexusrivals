@@ -7,7 +7,8 @@ const authFetch = axios.create({
   baseURL: API_URL,
   timeout: 5000,
   headers: {
-    Accept: 'application/json'
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
   }
 })
 
